@@ -1,11 +1,12 @@
 import React from 'react'
+import Chirp from './Chirp'
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-
-
-
+    state = {
+        chirps: [{
+            chirpAuthor: "Amanda",
+            chirpText: "hello"
+        }]
     }
 
 
@@ -19,19 +20,10 @@ class App extends React.Component {
                         </nav>
                     </div>
                 </div>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-12">
-                            <div className="card mt-4">
-                                <div className="card-body">
-                                    <h5 className="card-title">Title</h5>
-                                    <p className="card-text">text</p>
-                                    <button>Admin Options</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {this.state.chirps.forEach(chirp => {
+                    console.log(chirp);
+                    <Chirp auth={chirp.chirpAuthor} txt={chirp.chirpText} />
+                })}
             </>
 
         )
