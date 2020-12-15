@@ -6,6 +6,12 @@ class App extends React.Component {
         chirps: [{
             chirpAuthor: "Amanda",
             chirpText: "hello"
+        }, {
+            chirpAuthor: "Matt",
+            chirpText: "hello world"
+        }, {
+            chirpAuthor: "Alex",
+            chirpText: "how are you?"
         }]
     }
 
@@ -20,9 +26,8 @@ class App extends React.Component {
                         </nav>
                     </div>
                 </div>
-                {this.state.chirps.forEach(chirp => {
-                    console.log(chirp);
-                    <Chirp auth={chirp.chirpAuthor} txt={chirp.chirpText} />
+                {this.state.chirps.map(chirp => {
+                    return <Chirp {...chirp} />
                 })}
             </>
 
