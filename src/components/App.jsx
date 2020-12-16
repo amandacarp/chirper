@@ -1,5 +1,6 @@
 import React from 'react'
 import Chirp from './Chirp'
+import CreateChirp from './CreateChirp'
 
 class App extends React.Component {
     state = {
@@ -15,6 +16,9 @@ class App extends React.Component {
         }]
     }
 
+    createChirp = (chirp) => {
+        this.setState({chirps: [chirp, ...this.state.chirps]})
+    }
 
     render() {
         return (
@@ -24,10 +28,11 @@ class App extends React.Component {
                         <nav className="navbar navbar-light bg-secondary">
                             <span className="navbar-brand mb-0 h1">Chirper</span>
                         </nav>
+                        <CreateChirp logChirp={this.createChirp} />
                     </div>
                 </div>
-                {this.state.chirps.map(chirp => {
-                    return <Chirp {...chirp} />
+                {this.state.chirps.map((chirp, index) => {
+                    return <Chirp key={index} {...chirp} />
                 })}
             </>
 
